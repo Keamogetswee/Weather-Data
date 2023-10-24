@@ -5,13 +5,17 @@ from helper_functions import isfloat
 
 db = mysql.connector.connect(
 host="localhost",
-user="root",
-passwd="P@ssw0rd",
+
 database="WeatherTechDB"
 )
 # Create a cursor
 mycursor = db.cursor()
 
+# function is responsible for initializing the database and creating the necessary table,
+# It opens a connection to the database, 
+# creates the table schema, 
+# commits the changes, 
+# and then closes the database connection.
 def initialize_db():
     db._open_connection()
     mycursor = db.cursor()
@@ -33,6 +37,12 @@ def initialize_db():
     # Close the database connection
     db.close()
 
+# function is responsible for inserting a new record into the table in the database.
+# It opens a connection to the database, 
+# creates a cursor, 
+# defines the INSERT query, 
+# executes the query with provided data, 
+# commits the changes, and then closes the database connection.
 def insert_data(date, city, temperature, humidity, condition, category):
     db._open_connection()
     mycursor = db.cursor()
@@ -49,7 +59,11 @@ def insert_data(date, city, temperature, humidity, condition, category):
     db.commit()
     # Close the database connection
     db.close()
-    
+
+# function is responsible for retrieving and displaying all records from the table in the database.
+# It opens a connection to the database, 
+# creates a cursor, 
+# executes a SELECT query to fetch all records
 def retrive_all_data():
     db._open_connection()
     mycursor = db.cursor()
@@ -60,7 +74,11 @@ def retrive_all_data():
    
     # Close the database connection
     db.close()
-        
+
+# function retrieves weather data for a specific city from the table in the database.
+# It opens a connection to the database,
+# executes an SQL SELECT query to fetch records for the specified city,
+# and returns the data as a list of records.
 def retrive_specific_data(city):
     db._open_connection()
     mycursor = db.cursor()

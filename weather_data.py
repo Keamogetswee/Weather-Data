@@ -18,10 +18,9 @@ def main():
         condition = line[4]
         
         if not temperature.isnumeric():
-            continue
-        # print(temperature.isnumeric())
-        # Convert temperature to Fahrenheit and categorize the weather
-        temperature_fahrenheit = convert_to_fahrenheit(int(temperature))
+            temperature = None
+
+        temperature_fahrenheit = convert_to_fahrenheit(temperature)
         weather_category = categorize_weather(temperature_fahrenheit)
         process_line(date, city, temperature_fahrenheit, humidity, condition, weather_category)
         filtered_data = retrive_specific_data("Johannesburg")
